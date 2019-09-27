@@ -16,7 +16,7 @@ pdp <- function(X_train, model, pred_var, grid_ratio=0.1, frac_to_build=0.1, ice
   for (i in 1:n){
     X_rep <- do.call("rbind", replicate(num_grid, X_train[i, ], simplify = F))
     X_rep[, col_idx] <- grid
-    pred <- predict(fit_xgb, X_rep)
+    pred <- predict(model, X_rep)
     y[i, ] <- pred
     x[i, ] <- grid
   }
